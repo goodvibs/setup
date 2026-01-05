@@ -141,6 +141,10 @@ keybinds clear-defaults=true {
         bind "Super down" { MoveFocus "down"; }
         bind "Super up" { MoveFocus "up"; }
         bind "Super right" { MoveFocusOrTab "right"; }
+        bind "Super h" { MoveFocusOrTab "left"; }
+        bind "Super j" { MoveFocus "down"; }
+        bind "Super k" { MoveFocus "up"; }
+        bind "Super l" { MoveFocusOrTab "right"; }
         bind "Super +" { Resize "Increase"; }
         bind "Super -" { Resize "Decrease"; }
         bind "Super =" { Resize "Increase"; }
@@ -148,12 +152,6 @@ keybinds clear-defaults=true {
         bind "Super ]" { NextSwapLayout; }
         bind "Super f" { ToggleFloatingPanes; }
         bind "Super Enter" { ToggleFocusFullscreen; }
-        bind "Super h" { MoveFocusOrTab "left"; }
-        bind "Super j" { MoveFocus "down"; }
-        bind "Super k" { MoveFocus "up"; }
-        bind "Super l" { MoveFocusOrTab "right"; }
-        bind "Super i" { MoveTab "left"; }
-        bind "Super o" { MoveTab "right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }

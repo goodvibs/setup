@@ -89,12 +89,21 @@ keybinds clear-defaults=true {
         bind "Super down" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Super up" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Super right" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
-        bind "e" { EditScrollback; SwitchToMode "locked"; }
-        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "Super h" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
         bind "Super j" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Super k" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Super l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
+        bind "Ctrl 1"  { GoToTab 1; SwitchToMode "locked"; }
+        bind "Ctrl 2"  { GoToTab 2; SwitchToMode "locked"; }
+        bind "Ctrl 3"  { GoToTab 3; SwitchToMode "locked"; }
+        bind "Ctrl 4"  { GoToTab 4; SwitchToMode "locked"; }
+        bind "Ctrl 5"  { GoToTab 5; SwitchToMode "locked"; }
+        bind "Ctrl 6"  { GoToTab 6; SwitchToMode "locked"; }
+        bind "Ctrl 7"  { GoToTab 7; SwitchToMode "locked"; }
+        bind "Ctrl 8"  { GoToTab 8; SwitchToMode "locked"; }
+        bind "Ctrl 9"  { GoToTab 9; SwitchToMode "locked"; }
+        bind "e" { EditScrollback; SwitchToMode "locked"; }
+        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "s" { SwitchToMode "normal"; }
     }
     search {
@@ -145,6 +154,15 @@ keybinds clear-defaults=true {
         bind "Super j" { MoveFocus "down"; }
         bind "Super k" { MoveFocus "up"; }
         bind "Super l" { MoveFocusOrTab "right"; }
+        bind "Ctrl 1"  { GoToTab 1; SwitchToMode "locked"; }
+        bind "Ctrl 2"  { GoToTab 2; SwitchToMode "locked"; }
+        bind "Ctrl 3"  { GoToTab 3; SwitchToMode "locked"; }
+        bind "Ctrl 4"  { GoToTab 4; SwitchToMode "locked"; }
+        bind "Ctrl 5"  { GoToTab 5; SwitchToMode "locked"; }
+        bind "Ctrl 6"  { GoToTab 6; SwitchToMode "locked"; }
+        bind "Ctrl 7"  { GoToTab 7; SwitchToMode "locked"; }
+        bind "Ctrl 8"  { GoToTab 8; SwitchToMode "locked"; }
+        bind "Ctrl 9"  { GoToTab 9; SwitchToMode "locked"; }
         bind "Super +" { Resize "Increase"; }
         bind "Super -" { Resize "Decrease"; }
         bind "Super =" { Resize "Increase"; }

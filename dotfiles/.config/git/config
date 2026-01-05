@@ -14,7 +14,7 @@
 
 [user]
     name = Vibhav Singamshetty
-    email = vibsingamshetty@example.com
+    email = vibsingamshetty@gmail.com
 
 [includeIf "gitdir:~/Developer/Work/"]
     path = ~/.config/git/config-work

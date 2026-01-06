@@ -3,6 +3,9 @@
 !aerospace/
 !aerospace/**/*
 
+!cursor/
+!cursor/**/*
+
 !ghostty/
 !ghostty/**/*
 

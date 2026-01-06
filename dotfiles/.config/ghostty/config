@@ -20,5 +20,6 @@ keybind = super+h=unbind
 keybind = super+j=unbind
 keybind = super+k=unbind
 keybind = super+l=unbind
+keybind = ctrl+tab=unbind
 
 window-save-state = always

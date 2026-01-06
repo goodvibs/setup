@@ -102,6 +102,7 @@ keybinds clear-defaults=true {
         bind "Ctrl 7"  { GoToTab 7; SwitchToMode "locked"; }
         bind "Ctrl 8"  { GoToTab 8; SwitchToMode "locked"; }
         bind "Ctrl 9"  { GoToTab 9; SwitchToMode "locked"; }
+        bind "Ctrl tab" { ToggleTab; }
         bind "e" { EditScrollback; SwitchToMode "locked"; }
         bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "s" { SwitchToMode "normal"; }
@@ -163,6 +164,7 @@ keybinds clear-defaults=true {
         bind "Ctrl 7"  { GoToTab 7; SwitchToMode "locked"; }
         bind "Ctrl 8"  { GoToTab 8; SwitchToMode "locked"; }
         bind "Ctrl 9"  { GoToTab 9; SwitchToMode "locked"; }
+        bind "Ctrl tab" { ToggleTab; }
         bind "Super +" { Resize "Increase"; }
         bind "Super -" { Resize "Decrease"; }
         bind "Super =" { Resize "Increase"; }

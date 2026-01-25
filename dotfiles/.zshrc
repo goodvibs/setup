@@ -26,6 +26,11 @@ path=(
 
 export PATH
 
+# --- zellij ------------------------------------------------------------------
+repo-session() {
+    zellij -n repo -s $(basename $PWD)
+}
+
 # --- tools -------------------------------------------------------------------
 eval "$(zoxide init zsh)"
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh

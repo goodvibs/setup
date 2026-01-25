@@ -1,9 +1,6 @@
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
-customCommands:
-  - key: "W"
-    command: git commit --no-verify
-    context: "global"
-    output: terminal
+    pager: delta --paging=never --side-by-side
+gui:
+  sidePanelWidth: 0.2

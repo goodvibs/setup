@@ -1,1 +1,4 @@
 chats/
+projects/
+prompt_history.json
+agent-cli-state.json

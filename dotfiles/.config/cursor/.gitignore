@@ -1,4 +1,6 @@
 chats/
 projects/
+ai-tracking/
 prompt_history.json
 agent-cli-state.json
+statsig-cache.json

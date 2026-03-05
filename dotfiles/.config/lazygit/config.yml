@@ -1,4 +1,5 @@
 git:
+  diffContextSize: 99999
   paging:
     colorArg: always
     pager: delta --paging=never --side-by-side

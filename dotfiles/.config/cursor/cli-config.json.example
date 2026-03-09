@@ -22,7 +22,15 @@
   "privacyCache": {
     "ghostMode": true,
     "privacyMode": 2,
-    "updatedAt": 1772685308192
+    "updatedAt": 0
+  },
+  "authInfo": {
+    "email": "",
+    "displayName": "",
+    "teamId": 0,
+    "teamName": "",
+    "userId": 0,
+    "authId": ""
   },
   "network": {
     "useHttp1ForAgent": false

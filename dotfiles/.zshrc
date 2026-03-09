@@ -1,5 +1,6 @@
 # --- theme -------------------------------------------------------------------
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
+source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
 source ~/.p10k.zsh
 
 # --- aliases -----------------------------------------------------------------
@@ -14,15 +15,16 @@ path=(
   "$HOME/.cargo/bin"
   "$HOME/.lmstudio/bin"
   /Applications/Ghostty.app/Contents/MacOS
-  /opt/homebrew/bin
-  /opt/homebrew/sbin
+  "$HOMEBREW_PREFIX/bin"
+  "$HOMEBREW_PREFIX/sbin"
   /usr/local/bin
   /usr/bin
   /bin
   /usr/sbin
   /sbin
-  "$HOME/Developer/extra/git-open"
 )
+
+[[ -d "$HOME/Developer/extra/git-open" ]] && path+=("$HOME/Developer/extra/git-open")
 
 export PATH
 
@@ -33,5 +35,8 @@ repo-session() {
 
 # --- tools -------------------------------------------------------------------
 eval "$(zoxide init zsh)"
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# local overrides
+[[ -f ./.zshrc.local ]] && source ./.zshrc.local

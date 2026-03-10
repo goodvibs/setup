@@ -22,9 +22,11 @@ path=(
   /bin
   /usr/sbin
   /sbin
+  /$HOME/Developer/plugins/bin
 )
 
-[[ -d "$HOME/Developer/extra/git-open" ]] && path+=("$HOME/Developer/extra/git-open")
+[[ -d "$HOME/Developer/plugins/git-open" ]] && path+=("$HOME/Developer/plugins/git-open")
+[[ -d "$HOME/Developer/plugins/zvm" ]] && path+=("$HOME/Developer/plugins/zvm")
 
 export PATH
 

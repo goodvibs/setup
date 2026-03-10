@@ -32,7 +32,7 @@ export PATH
 
 # --- zellij ------------------------------------------------------------------
 repo-session() {
-    zellij -n repo -s $(basename $PWD)
+    zellij -n repo -s "$(basename "$PWD")"
 }
 
 # --- tools -------------------------------------------------------------------
@@ -41,4 +41,4 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # local overrides
-[[ -f ./.zshrc.local ]] && source ./.zshrc.local
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

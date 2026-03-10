@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# link.sh — symlink dotfiles into $HOME
+# symlink-dotfiles.sh — symlink dotfiles into $HOME
 #
 # Options:
 #   -n, --dry-run        Show what would happen
@@ -114,6 +114,14 @@ main() {
   link_one "$dotfiles_dir/.zshenv"   "$HOME/.zshenv"
   link_one "$dotfiles_dir/.p10k.zsh" "$HOME/.p10k.zsh"
   link_one "$dotfiles_dir/.config"   "$HOME/.config"
+
+  local setup_root plugins_bin_src
+  setup_root="$(cd "$script_dir/.." && pwd)"
+  plugins_bin_src="$setup_root/plugins/bin"
+  if [[ -d "$plugins_bin_src" ]]; then
+    run "mkdir -p \"$HOME/Developer/plugins\""
+    link_one "$plugins_bin_src" "$HOME/Developer/plugins/bin"
+  fi
 
   log "Done."
 }

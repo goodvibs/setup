@@ -1,5 +1,5 @@
 # --- theme -------------------------------------------------------------------
-HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
+HOMEBREW_PREFIX=/opt/homebrew
 source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
 source ~/.p10k.zsh
 

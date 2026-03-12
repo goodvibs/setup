@@ -22,7 +22,7 @@ path=(
   /bin
   /usr/sbin
   /sbin
-  "$HOME/Developer/plugins/bin"
+  "$HOME/Developer/Personal/setup/plugins/bin"
 )
 
 [[ -d "$HOME/Developer/plugins/git-open" ]] && path+=("$HOME/Developer/plugins/git-open")

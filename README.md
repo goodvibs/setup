@@ -13,8 +13,8 @@ Quickly reproduce my dev setup on a Mac.
 ```bash
 git clone <repo-url> setup && cd setup
 git submodule update --init --recursive
-./scripts/symlink-dotfiles.sh -f   # or -b for backup
-./scripts/install-plugins.sh      # optional, requires zvm and git-open
+./scripts/symlink-dotfiles -f   # or -b for backup
+./scripts/install-plugins      # optional, requires zvm and git-open
 ```
 
 ## Repository Structure
@@ -28,13 +28,13 @@ git submodule update --init --recursive
 
 ## Scripts
 
-**symlink-dotfiles.sh** — Symlinks dotfiles into `$HOME`:
+**symlink-dotfiles** — Symlinks dotfiles into `$HOME`:
 
 - `.zshrc`, `.zshenv`, `.p10k.zsh`, `.config` → `$HOME`
 - `plugins/bin` → `$HOME/Developer/plugins/bin`
 - Options: `-n` dry-run, `-f` force, `-b` backup, `-i` interactive, `-v` verbose
 
-**install-plugins.sh** — Runs each script in `plugins/install-scripts/`:
+**install-plugins** — Runs each script in `plugins/install-scripts/`:
 
 - `zvm.sh` — Builds zvm from sibling `../zvm`, outputs to `plugins/bin/`
 - `git-open.sh` — Copies git-open from sibling `../git-open` to `plugins/bin/`

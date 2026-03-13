@@ -22,15 +22,13 @@ path=(
   /bin
   /usr/sbin
   /sbin
+  "$HOME/Developer/Personal/setup/scripts"
   "$HOME/Developer/Personal/setup/plugins/bin"
 )
 
-[[ -d "$HOME/Developer/plugins/git-open" ]] && path+=("$HOME/Developer/plugins/git-open")
-[[ -d "$HOME/Developer/plugins/zvm" ]] && path+=("$HOME/Developer/plugins/zvm")
-
 export PATH
 
-# --- zellij ------------------------------------------------------------------
+# --- handy functions ------------------------------------------------------------------
 repo-session() {
     zellij -n repo -s "$(basename "$PWD")"
 }

@@ -1,3 +1,5 @@
+SETUP_DIR="$HOME/Developer/Personal/setup"
+
 # --- theme -------------------------------------------------------------------
 HOMEBREW_PREFIX=/opt/homebrew
 source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
@@ -22,8 +24,8 @@ path=(
   /bin
   /usr/sbin
   /sbin
-  "$HOME/Developer/Personal/setup/scripts"
-  "$HOME/Developer/Personal/setup/plugins/bin"
+  "$SETUP_DIR/scripts"
+  "$SETUP_DIR/plugins/bin"
 )
 
 export PATH
@@ -39,4 +41,4 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # local overrides
-[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+[[ -f "$SETUP_DIR/dotfiles/.zshrc.local" ]] && source "$SETUP_DIR/dotfiles/.zshrc.local"

@@ -3,9 +3,6 @@
 !aerospace/
 !aerospace/**/*
 
-!cursor/
-!cursor/**/*
-
 !ghostty/
 !ghostty/**/*
 
@@ -20,6 +17,12 @@
 
 !nvim/
 !nvim/**/*
+
+!helix/
+!helix/**/*
+
+!yazi/
+!yazi/**/*
 
 !zellij/
 !zellij/**/*

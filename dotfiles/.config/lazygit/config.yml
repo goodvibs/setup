@@ -1,7 +1,7 @@
 git:
   diffContextSize: 99999
-  paging:
-    colorArg: always
-    pager: delta --paging=never --side-by-side
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --side-by-side
 gui:
   sidePanelWidth: 0.2

@@ -9,10 +9,8 @@ mouse-hide-while-typing = true
 scrollback-limit = 500000
 mouse-scroll-multiplier = 1
 
-background-opacity = 0.9
-background-blur-radius = 30
-
-keybind = super+;=clear_screen
+# background-opacity = 0.9
+# background-blur-radius = 30
 
 keybind = super+r=reload_config
 

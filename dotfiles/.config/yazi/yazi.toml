@@ -1,0 +1,23 @@
+# Copied from https://github.com/wildestwest/dotfiles/blob/main/yazi/yazi.toml
+
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[mgr]
+show_hidden = true
+show_symlink = true
+mouse_events = ["click", "scroll"]
+
+[[mgr.prepend_keymap]]
+on = "<C-p>"
+run = "shell -- qlmanage -p %s"
+
+[opener]
+edit = [
+  { run = 'hx "$@"', desc = "Edit in helix", block = true, for = "macos" },
+]
+open = [
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+]
+reveal = [
+  { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
+]

@@ -1,0 +1,12 @@
+[mgr]
+prepend_keymap = [
+  { on = ["g", "e"], run = "arrow bot", desc = "Go to bottom" },
+  { on = "-", run = "leave", desc = "Go to the parent directory" },
+  { on = "<C-o>", run = "back", desc = "Back to the previous directory" },
+  { on = "<C-i>", run = "forward", desc = "Go forward to the next directory" },
+  { on = ["g", "?"], run = "help", desc = "Open help menu" },
+  { on = "<C-p>", run = "shell -- qlmanage -p %s", desc = "Quick look" },
+]
+
+[help]
+prepend_keymap = [{ on = "/", run = "filter --smart", desc = "Filter items" }]

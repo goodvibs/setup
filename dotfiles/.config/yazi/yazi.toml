@@ -3,17 +3,16 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [mgr]
+sort_by = "extension"
+linemode = "size"
 show_hidden = true
 show_symlink = true
 mouse_events = ["click", "scroll"]
-
-[[mgr.prepend_keymap]]
-on = "<C-p>"
-run = "shell -- qlmanage -p %s"
+ratio = [0, 1, 1]
 
 [opener]
 edit = [
-  { run = 'hx "$@"', desc = "Edit in helix", block = true, for = "macos" },
+  { run = 'hx "$@"', desc = "Edit in helix", block = true, for = "unix" },
 ]
 open = [
   { run = 'open "$@"', desc = "Open", for = "macos" },

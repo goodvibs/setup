@@ -7,7 +7,7 @@ theme = TokyoNight Night
 split-divider-color = #dc9fe0
 unfocused-split-opacity = 0.65
 mouse-hide-while-typing = true
-scrollback-limit = 500000
+scrollback-limit = 1000000
 mouse-scroll-multiplier = 1
 
 # background-opacity = 0.9

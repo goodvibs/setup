@@ -11,7 +11,7 @@ source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
 source "$HOME/.p10k.zsh"
 
 ### ALIASES
-alias e='eza'
+alias e='eza -a'
 alias lg='lazygit'
 
 ### PATH

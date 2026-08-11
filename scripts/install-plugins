@@ -1,8 +1,9 @@
 #!/bin/sh
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-mkdir -p "$HOME/Developer/Personal/setup/plugins/bin"
+mkdir -p "$ROOT/plugins/bin"
 
-for file in $HOME/Developer/Personal/setup/plugins/install-scripts/*; do
+for file in "$ROOT/plugins/install-scripts/"*; do
     echo "Running plugin install script: $file"
-    $file
+    "$file"
 done

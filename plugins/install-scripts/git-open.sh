@@ -1,5 +1,6 @@
 #!/bin/sh
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+PLUGINS_BIN="$ROOT/plugins/bin"
 
-PLUGINS_BIN="$HOME/Developer/Personal/setup/plugins/bin"
-
-ln -s "$HOME/Developer/Personal/git-open/git-open" "$PLUGINS_BIN/git-open"
+mkdir -p "$PLUGINS_BIN"
+ln -sf "$HOME/Developer/Personal/git-open/git-open" "$PLUGINS_BIN/git-open"

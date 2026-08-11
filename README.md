@@ -7,40 +7,98 @@ Quickly reproduce my dev setup on a Mac.
 - macOS
 - Homebrew
 - Git
+- Python 3.11+ (for the dotfiles CLI)
 
 ## Quick Start
 
 ```bash
-git clone <repo-url> setup && cd setup
-git submodule update --init --recursive
-./scripts/symlink-dotfiles -f   # or -b for backup
-./scripts/install-plugins      # optional, requires zvm and git-open
+git clone git@github.com:goodvibs/dotfiles.git && cd setup
+./bin/dotfiles bootstrap          # submodule sync + symlink apply
+brew bundle                       # optional: install packages from Brewfile
+./scripts/install-plugins         # optional: build custom tools (zvm, git-open, …)
+```
+
+## How It Works
+
+Configs live in `configs/`. `manifest.toml` maps each file or directory to one symlink target — the path each tool actually reads. `dotfiles apply` creates those links.
+
+```
+configs/          manifest.toml          $HOME
+─────────         ─────────────          ─────
+configs/git/  ──► ~/.config/git      ──► ~/.config/git -> configs/git
+configs/zshrc ──► ~/.zshrc           ──► ~/.zshrc -> configs/zshrc
+configs/nvim/ ──► ~/.config/nvim     ──► ~/.config/nvim -> configs/nvim
 ```
 
 ## Repository Structure
 
-| Path                | Purpose                                                                 |
-| ------------------- | ----------------------------------------------------------------------- |
-| `dotfiles/`         | Dotfiles and configs symlinked into `$HOME`                             |
-| `dotfiles/.config/` | App configs (nvim as git submodule, karabiner, aerospace, zellij, etc.) |
-| `scripts/`          | Setup scripts                                                           |
-| `plugins/`          | Custom tools and install scripts                                        |
+| Path            | Purpose                                              |
+| --------------- | ---------------------------------------------------- |
+| `configs/`      | Config files (inline + git submodules)                |
+| `manifest.toml` | Symlink target map                                   |
+| `bin/dotfiles`  | CLI: apply, audit, sync, bootstrap, add (default: summary) |
+| `lib/dotfiles.py` | Implementation                                   |
+| `plugins/`      | Custom tools and install scripts                     |
+| `Brewfile`      | Homebrew packages (run `brew bundle` manually)       |
 
-## Scripts
+## CLI
 
-**symlink-dotfiles** — Symlinks dotfiles into `$HOME`:
+```bash
+dotfiles                    # summary (default)
+dotfiles bootstrap          # new machine: sync submodules + apply links
+dotfiles apply [-n] [-f] [-b] [-i] [-v]
+dotfiles audit              # manifest vs filesystem drift
+dotfiles sync               # git submodule update --init --recursive
+dotfiles add <name> --target <path>   # scaffold configs/<name> + manifest entry
+```
 
-- `.zshrc`, `.zshenv`, `.p10k.zsh`, `.config` → `$HOME`
-- `plugins/bin` → `$HOME/Developer/plugins/bin`
-- Options: `-n` dry-run, `-f` force, `-b` backup, `-i` interactive, `-v` verbose
+**apply options:** `-n` dry-run, `-f` force, `-b` backup, `-i` interactive, `-v` verbose
 
-**install-plugins** — Runs each script in `plugins/install-scripts/`:
+## Adding a Config
 
-- `zvm.sh` — Builds zvm from sibling `../zvm`, outputs to `plugins/bin/`
-- `git-open.sh` — Copies git-open from sibling `../git-open` to `plugins/bin/`
+Look up where the tool reads its config, then add one manifest entry for that path:
 
-Requires zvm and git-open as sibling directories of the setup repo.
+```bash
+dotfiles add myapp --target ~/.config/myapp
+dotfiles add myapp --target ~/.myapprc
+```
+
+## External Repos (Submodules)
+
+| Config | Repository |
+| ------ | ---------- |
+| nvim   | `goodvibs/nvim-config` |
+| helix  | `goodvibs/hx-config` |
+
+Edit inside `configs/nvim` or `configs/helix`, push to the upstream repo, then commit the updated submodule pointer in this repo.
+
+To add a new external config later, add a `[[entry]]` with `[entry.repo]` in `manifest.toml` and run `dotfiles sync`.
+
+## Shell Layout
+
+| Source | Target |
+| ------ | ------ |
+| `configs/zshenv` | `~/.zshenv` (early `PATH`) |
+| `configs/zshrc` | `~/.zshrc` |
+| `configs/p10k.zsh` | `~/.p10k.zsh` |
+| `configs/zshrc.local` | machine-specific overrides (gitignored; sourced by `.zshrc`) |
+
+Setup repo root is detected from the `~/.zshrc` symlink path (no hardcoded clone location).
+
+## Global Agent Instructions
+
+One file deployed to each tool's global path:
+
+| Source | Target | Tool |
+| ------ | ------ | ---- |
+| `configs/AGENTS.md` | `~/.config/agents/AGENTS.md` | Shared |
+| `configs/AGENTS.md` | `~/.claude/CLAUDE.md` | Claude Code |
+
+Edit `configs/AGENTS.md` only.
+
+Cursor does not read a global `AGENTS.md` from `$HOME`; use **Customize → Rules → User Rules** or mirror this file there.
 
 ## Local Overrides
 
-- `~/.zshrc.local` — Sourced by `.zshrc` for machine-specific overrides
+- `configs/zshrc.local` — sourced by `.zshrc` for machine-specific shell config
+- Optional manifest entries (`plugins-bin`) are skipped until sources exist

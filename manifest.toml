@@ -1,0 +1,103 @@
+# Dotfiles manifest
+
+[repo]
+configs_root = "configs"
+
+# --- Shell ---
+
+[[entry]]
+name = "zsh-env"
+description = "Zsh environment (PATH for all zsh invocations)"
+source = "configs/zshenv.zsh"
+target = "~/.zshenv"
+
+[[entry]]
+name = "zshrc"
+description = "Zsh interactive config"
+source = "configs/zshrc.zsh"
+target = "~/.zshrc"
+
+[[entry]]
+name = "p10k"
+description = "Powerlevel10k prompt config"
+source = "configs/p10k.zsh"
+target = "~/.p10k.zsh"
+
+# --- App configs ---
+
+[[entry]]
+name = "git"
+description = "Git config directory (~/.config/git/config)"
+source = "configs/git"
+target = "~/.config/git"
+
+[[entry]]
+name = "nvim"
+source = "configs/nvim"
+target = "~/.config/nvim"
+
+[entry.repo]
+url = "git@github.com:goodvibs/nvim-config.git"
+kind = "submodule"
+
+[[entry]]
+name = "helix"
+source = "configs/helix"
+target = "~/.config/helix"
+
+[entry.repo]
+url = "git@github.com:goodvibs/hx-config.git"
+kind = "submodule"
+
+[[entry]]
+name = "aerospace"
+source = "configs/aerospace"
+target = "~/.config/aerospace"
+
+[[entry]]
+name = "ghostty"
+source = "configs/ghostty"
+target = "~/.config/ghostty"
+
+[[entry]]
+name = "karabiner"
+source = "configs/karabiner"
+target = "~/.config/karabiner"
+
+[[entry]]
+name = "lazygit"
+source = "configs/lazygit"
+target = "~/.config/lazygit"
+
+[[entry]]
+name = "yazi"
+source = "configs/yazi"
+target = "~/.config/yazi"
+
+[[entry]]
+name = "zellij"
+source = "configs/zellij"
+target = "~/.config/zellij"
+
+# --- Global agent instructions ---
+
+[[entry]]
+name = "agents-md"
+description = "Global agent instructions"
+source = "configs/global-agent-instructions.md"
+target = "~/.config/agents/AGENTS.md"
+
+[[entry]]
+name = "claude-md"
+description = "Claude Code global instructions"
+source = "configs/global-agent-instructions.md"
+target = "~/.claude/CLAUDE.md"
+
+# --- Setup repo paths ---
+
+[[entry]]
+name = "plugins-bin"
+description = "Custom CLI tools built by install-plugins"
+source = "plugins/bin"
+target = "~/.local/share/setup/plugins/bin"
+optional = true

@@ -1,9 +1,14 @@
-SETUP_DIR="$HOME/Developer/Personal/setup"
+# Resolve setup repo root from the ~/.zshrc symlink target (configs/zshrc).
+if [[ -L "$HOME/.zshrc" ]]; then
+  SETUP_DIR="$(cd "$(dirname "$(readlink "$HOME/.zshrc")")/.." && pwd)"
+else
+  SETUP_DIR="${SETUP_DIR:-$HOME/Developer/Personal/setup}"
+fi
 
 ### THEME
 HOMEBREW_PREFIX=/opt/homebrew
 source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
-source ~/.p10k.zsh
+source "$HOME/.p10k.zsh"
 
 ### ALIASES
 alias e='eza'
@@ -14,6 +19,7 @@ typeset -U path PATH
 
 path=(
   "$HOME/.local/bin"
+  "$HOME/.local/share/setup/plugins/bin"
   "$HOME/.cargo/bin"
   "$HOME/.lmstudio/bin"
   /Applications/Ghostty.app/Contents/MacOS
@@ -26,6 +32,7 @@ path=(
   /bin
   /usr/sbin
   /sbin
+  "$SETUP_DIR/bin"
   "$SETUP_DIR/scripts"
   "$SETUP_DIR/plugins/bin"
 )
@@ -52,11 +59,11 @@ source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 ### CUSTOM COMMANDS
 source-zshrc() {
-  source ~/.zshrc
+  source "$HOME/.zshrc"
 }
 
 zshrc-open() {
-  hx ~/.zshrc
+  hx "$HOME/.zshrc"
 }
 
 project-widget() {
@@ -81,4 +88,4 @@ zle -N project-widget
 bindkey '^ ' project-widget
 
 ### LOCAL OVERRIDES
-[[ -f "$SETUP_DIR/dotfiles/.zshrc.local" ]] && source "$SETUP_DIR/dotfiles/.zshrc.local"
+[[ -f "$SETUP_DIR/configs/zshrc.local" ]] && source "$SETUP_DIR/configs/zshrc.local"

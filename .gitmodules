@@ -1,7 +1,6 @@
-[submodule "dotfiles/.config/nvim"]
-	path = dotfiles/.config/nvim
+[submodule "configs/nvim"]
+	path = configs/nvim
 	url = git@github.com:goodvibs/nvim-config.git
-
-[submodule "dotfiles/.config/helix"]
-	path = dotfiles/.config/helix
+[submodule "configs/helix"]
+	path = configs/helix
 	url = git@github.com:goodvibs/hx-config.git

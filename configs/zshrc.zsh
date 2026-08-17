@@ -88,4 +88,4 @@ zle -N project-widget
 bindkey '^ ' project-widget
 
 ### LOCAL OVERRIDES
-[[ -f "$SETUP_DIR/configs/zshrc.local" ]] && source "$SETUP_DIR/configs/zshrc.local"
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

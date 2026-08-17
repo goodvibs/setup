@@ -18,6 +18,12 @@ source = "configs/zshrc.zsh"
 target = "~/.zshrc"
 
 [[entry]]
+name = "zshrc-local"
+description = "Zsh machine-local interactive config"
+source = "configs/zshrc.local.zsh"
+target = "~/.zshrc.local"
+
+[[entry]]
 name = "p10k"
 description = "Powerlevel10k prompt config"
 source = "configs/p10k.zsh"

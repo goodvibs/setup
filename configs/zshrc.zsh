@@ -54,8 +54,12 @@ export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exc
 
 eval "$(zoxide init zsh)"
 
-source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [[ -n ${commands[zsh-helix-mode]:-} ]]; then
+  source "${commands[zsh-helix-mode]}"
+else
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
 ### CUSTOM COMMANDS
 source-zshrc() {
@@ -80,7 +84,11 @@ project-widget() {
 
   if [[ -n "$project" ]]; then
     BUFFER="cd ${(q)project}"
-    zle accept-line
+    if (( $+widgets[_zhm_accept_or_submit] )); then
+      zle _zhm_accept_or_submit
+    else
+      zle accept-line
+    fi
   fi
 }
 

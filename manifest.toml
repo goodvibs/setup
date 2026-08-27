@@ -72,8 +72,8 @@ target = "~/.config/karabiner"
 
 [[entry]]
 name = "lazygit"
-source = "configs/lazygit"
-target = "~/.config/lazygit"
+source = "configs/lazygit/config.yml"
+target = "~/Library/Application Support/lazygit/config.yml"
 
 [[entry]]
 name = "yazi"

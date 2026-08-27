@@ -1,7 +1,8 @@
 #!/bin/sh
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-mkdir -p "$ROOT/plugins/bin"
+rm -rf "$ROOT/plugins/bin"
+mkdir "$ROOT/plugins/bin"
 
 for file in "$ROOT/plugins/install-scripts/"*; do
     echo "Running plugin install script: $file"

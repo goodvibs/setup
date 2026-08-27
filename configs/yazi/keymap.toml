@@ -1,3 +1,5 @@
+#:schema = "https://yazi-rs.github.io/schemas/keymap.json"
+
 [mgr]
 prepend_keymap = [
   { on = ["g", "e"], run = "arrow bot", desc = "Go to bottom" },

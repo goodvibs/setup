@@ -38,6 +38,7 @@ path=(
 )
 
 export PATH
+export EDITOR="hx"
 export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
 ### TOOLS

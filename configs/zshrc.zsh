@@ -20,6 +20,7 @@ typeset -U path PATH
 path=(
   "$HOME/.local/bin"
   "$HOME/.local/share/setup/plugins/bin"
+  "$HOMEBREW_PREFIX/opt/rustup/bin"
   "$HOME/.cargo/bin"
   "$HOME/.lmstudio/bin"
   /Applications/Ghostty.app/Contents/MacOS

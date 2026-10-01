@@ -1,5 +1,8 @@
-#!/usr/bin/env python3
 """Manifest-driven dotfiles manager."""
+
+# /// script
+# requires-python = ">=3.11"
+# ///
 
 from __future__ import annotations
 

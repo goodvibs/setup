@@ -7,7 +7,7 @@ Quickly reproduce my dev setup on a Mac.
 - macOS
 - Homebrew
 - Git
-- Python 3.11+ (for the dotfiles CLI)
+- uv (for the dotfiles CLI)
 
 ## Quick Start
 

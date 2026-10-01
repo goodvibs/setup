@@ -63,6 +63,11 @@ else
   source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M hxins '^X^E' edit-command-line
+bindkey -M hxnor '^X^E' edit-command-line
+
 ### CUSTOM COMMANDS
 source-zshrc() {
   source "$HOME/.zshrc"

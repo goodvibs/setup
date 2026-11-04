@@ -77,9 +77,8 @@ zshrc-open() {
   hx "$HOME/.zshrc"
 }
 
-project-widget() {
+project-filter() {
   local project
-
   project=$(
     fd --hidden --type d --max-depth 2 '^\.git$' \
       "$HOME/Developer/Work" \
@@ -88,6 +87,12 @@ project-widget() {
     sed 's|/\.git/$||' |
     fzf --height=60% --layout=reverse --border --prompt='Project> '
   )
+  print -r -- "$project"
+}
+
+project-widget() {
+  local project
+  project=$(project-filter)
 
   if [[ -n "$project" ]]; then
     BUFFER="cd ${(q)project}"

@@ -5,6 +5,8 @@ brew "act"
 brew "openssl@3"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Fast Node.js version manager
+brew "fnm"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # C++ interface to glib

@@ -44,11 +44,9 @@ export EDITOR="hx"
 export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
 ### NODE
-export NVM_DIR="$HOME/.nvm"
-mkdir -p "$NVM_DIR"
-[[ -s "$(brew --prefix nvm)/nvm.sh" ]] && source "$(brew --prefix nvm)/nvm.sh"
-[[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ]] &&
-  source "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+if (( $+commands[fnm] )); then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 ### TOOLS
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -114,3 +114,9 @@ name = "rex"
 source = "configs/rex"
 target = "~/.config/rex"
 description = "Rex configuration"
+
+[[entry]]
+name = "cursor-rex-skill"
+source = "configs/cursor/skills/rex"
+target = "~/.cursor/skills/rex"
+description = "Rex skill for Cursor"

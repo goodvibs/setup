@@ -18,6 +18,7 @@ alias lg='lazygit'
 typeset -U path PATH
 
 path=(
+  "$REX_BIN_DIR"
   "$HOME/.local/bin"
   "$HOME/.local/share/setup/plugins/bin"
   "$HOMEBREW_PREFIX/opt/rustup/bin"

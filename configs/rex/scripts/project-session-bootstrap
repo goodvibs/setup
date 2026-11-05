@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+set -e
+
+project=$(project-filter)
+if [[ -z "$project" ]]; then
+  exit 0
+fi
+
+session_name="${project:t}"
+created=$(rex new "$session_name" -c "$project" --window Editor --json -- hx .)
+session_id=$(print -r -- "$created" | jq -er '.session_id')
+
+rex window new -s "$session_id" Agent -c "$project" --json -- agent >/dev/null
+rex window new -s "$session_id" Shell -c "$project" --json >/dev/null
+
+client_id=$(rex client ls --json | jq -er --arg current "$REX_SESSION" \
+  'first(.clients[] | select(.info.kind == "app" and ((.session_ids // []) | index($current))) | .client_id)')
+rex -C "$client_id" do session.select session_id="$session_id"
+
+rex block close -s "$REX_SESSION" "$REX_BLOCK" >/dev/null 2>&1 || true

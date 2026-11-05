@@ -107,3 +107,10 @@ description = "Custom CLI tools built by install-plugins"
 source = "plugins/bin"
 target = "~/.local/share/setup/plugins/bin"
 optional = true
+
+
+[[entry]]
+name = "rex"
+source = "configs/rex"
+target = "~/.config/rex"
+description = "Rex configuration"

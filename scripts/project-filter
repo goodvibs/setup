@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+fd --hidden --type d --max-depth 2 '^\.git$' \
+  "$HOME/Developer/Work" \
+  "$HOME/Developer/Personal" \
+  2>/dev/null |
+sed 's|/\.git/$||'

@@ -1,8 +1,9 @@
 #!/bin/zsh
 
 set -e
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-project=$(zsh -lic project-filter)
+project=$("$HOME/.config/rex/scripts/project-picker")
 if [[ -z "$project" ]]; then
   exit 0
 fi

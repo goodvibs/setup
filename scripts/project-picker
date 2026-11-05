@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+"${0:A:h}/project-filter" |
+fzf --height=60% --layout=reverse --border --prompt='Project> '

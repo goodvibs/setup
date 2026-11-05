@@ -66,9 +66,11 @@ rex.action{
       layout = rex.layout.block{
         flavor = "com.superlogical.terminal.shell",
         options = {
+          shell = "none",
           command = {
             "zsh",
-            "-lic",
+            "-f",
+            "-c",
             'exec "$HOME/.config/rex/scripts/project-session-bootstrap"',
           },
         },

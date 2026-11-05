@@ -25,6 +25,9 @@ rex.action{
   run = function(ctx, args)
     local view, err = rex.session.view{}
     if err ~= nil then error(err, 0) end
+    if view == nil or view.windows == nil then
+      error("Could not inspect the current session's tabs", 0)
+    end
 
     local window = view.windows[args.index]
     if window == nil then
@@ -57,8 +60,8 @@ rex.action{
   title = "Open Project Session",
   description = "Choose a project and open Helix, an agent, and a shell.",
   run = function()
-    local window, err = rex.session.new_window{
-      window_label = "Project Picker",
+    local layer, err = rex.session.new_layer{
+      bounds = { 0.1, 0.1, 0.8, 0.8 },
       focus = true,
       layout = rex.layout.block{
         flavor = "com.superlogical.terminal.shell",
@@ -72,15 +75,12 @@ rex.action{
       },
     }
     if err ~= nil then error(err, 0) end
+    if layer == nil then error("Could not create the project picker layer", 0) end
 
-    if ctx ~= nil and ctx.client_id ~= nil then
-      rex.client.queue("session.select", {
-        session_id = ctx.session_id,
-        window_id = window.window_id,
-      })
-    end
-
-    return { window_id = window.window_id }
+    return {
+      layer_id = layer.layer_id,
+      block_id = layer.block_ids and layer.block_ids[1],
+    }
   end,
 }
 

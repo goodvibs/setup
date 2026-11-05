@@ -2,7 +2,7 @@
 
 set -e
 
-project=$(project-filter)
+project=$(zsh -lic project-filter)
 if [[ -z "$project" ]]; then
   exit 0
 fi

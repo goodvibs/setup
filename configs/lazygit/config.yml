@@ -1,5 +1,40 @@
+gui:
+  # Give the diff and file views most of the terminal width.
+  sidePanelWidth: 0.27
+  # Make the panel under the cursor useful without permanently wasting space.
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 3
+  shrinkSidePanelsToContent: true
+  sidePanels:
+    - [status]
+    - [files, worktrees, submodules]
+    - [branches, remotes, tags]
+    - [commits, reflog, stash]
+  mainPanelSplitMode: flexible
+  showRandomTip: false
+  showCommandLog: false
+  showRootItemInFileTree: false
+  scrollOffMargin: 4
+  # Keep the useful key-hint footer, including the panel-jump keys.
+  showListFooter: true
+  showPanelJumps: true
+
 git:
   diffContextSize: 99999
   diffRenderers:
-    - colorArg: always
+    # Unified view is wider and is the better default for reading long lines.
+    - name: delta
+      colorArg: always
+      command: delta --paging=never
+    # Press | to switch when side-by-side comparison is more useful.
+    - name: delta-side-by-side
+      colorArg: always
       command: delta --paging=never --side-by-side
+
+customCommands:
+  # A review mode that is easier to read than the small in-app diff pane.
+  - key: R
+    context: commits
+    command: 'git show --format=fuller --find-renames --find-copies {{.SelectedLocalCommit.Hash}} | delta --paging=always'
+    description: Review selected commit in Delta
+    output: terminal

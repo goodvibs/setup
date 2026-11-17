@@ -53,6 +53,7 @@
     vcs                       # git status
     command_execution_time    # previous command duration
     virtualenv                # python virtual environment
+    helix_mode                # current Helix editing mode
     prompt_char               # prompt symbol
   )
 
@@ -144,6 +145,12 @@
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=1
   # Remove space between '⇣' and '⇡' and all trailing spaces.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
+
+  # Helix mode badge. Same colors as the tokyonight statusline:
+  # insert light-green, normal blue, select magenta.
+  typeset -g POWERLEVEL9K_HELIX_MODE_INSERT_FOREGROUND='#9ece6a'
+  typeset -g POWERLEVEL9K_HELIX_MODE_NORMAL_FOREGROUND='#7aa2f7'
+  typeset -g POWERLEVEL9K_HELIX_MODE_SELECT_FOREGROUND='#bb9af7'
 
   # Grey current time.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey

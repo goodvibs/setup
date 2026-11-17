@@ -64,6 +64,24 @@ eval "$(zoxide init zsh)"
 
 if [[ -n ${commands[zsh-helix-mode]:-} ]]; then
   source "${commands[zsh-helix-mode]}"
+
+  # Integer, in hundredths of a second (1 = 10ms). Default is 40 (400ms).
+  # Shortens the wait before a bare Escape is recognized as Escape rather than
+  # the start of an Escape-prefixed key sequence.
+  KEYTIMEOUT=1
+
+  # p10k caches prompt_* output and only re-evaluates `-c` conditions on
+  # `zle reset-prompt`, so the mode is selected via `-c`. Colors are set per
+  # state in the p10k config.
+  prompt_helix_mode() {
+    p10k segment -s insert -c '${(M)ZHM_MODE:#insert}' -t 'INSERT'
+    p10k segment -s normal -c '${(M)ZHM_MODE:#normal}' -t 'NORMAL'
+    p10k segment -s select -c '${(M)ZHM_MODE:#select}' -t 'SELECT'
+  }
+
+  instant_prompt_helix_mode() {
+    p10k segment -s insert -t 'INS'
+  }
 else
   source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
   source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

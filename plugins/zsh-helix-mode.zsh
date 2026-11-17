@@ -44,6 +44,20 @@ if (( $+functions[zhm-add-update-region-highlight-hook] )); then
     && bindkey '^I' zhm_fzf_completion
 fi
 
+# Redraw the prompt whenever the Helix mode changes, so prompt segments that
+# depend on $ZHM_MODE stay in sync. Every mode switch goes through __zhm_mode_*.
+typeset -g _ZHM_PROMPT_MODE=$ZHM_MODE
+function _zhm_refresh_prompt {
+  [[ $_ZHM_PROMPT_MODE == $ZHM_MODE ]] && return
+  _ZHM_PROMPT_MODE=$ZHM_MODE
+  [[ -n ${WIDGET:-} ]] && zle reset-prompt
+}
+for _zhm_m in normal select insert; do
+  functions[_zhm_orig_mode_$_zhm_m]=$functions[__zhm_mode_$_zhm_m]
+  functions[__zhm_mode_$_zhm_m]="_zhm_orig_mode_$_zhm_m \"\$@\"; _zhm_refresh_prompt"
+done
+unset _zhm_m
+
 function _zhm_accept_or_submit() {
   if (( $+widgets[zhm_accept] )); then
     zle zhm_accept
@@ -53,4 +67,5 @@ function _zhm_accept_or_submit() {
 }
 zle -N _zhm_accept_or_submit
 
-export ZSH_HELIX_MODE_LOADED=1
+# Not exported: child shells (tabs, panes, nested zsh) must load the plugin themselves.
+typeset -g ZSH_HELIX_MODE_LOADED=1

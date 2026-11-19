@@ -1,0 +1,14 @@
+include = [
+    { path = "config.local.toml", optional = true },
+]
+
+[net]
+git-fetch-with-cli = true
+
+[build]
+rustc-wrapper = "kache"
+
+[env]
+HOST_CC = "kache cc"
+HOST_CXX = "kache c++"
+CC_KNOWN_WRAPPER_CUSTOM = "kache"

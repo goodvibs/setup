@@ -1,0 +1,4 @@
+[cache]
+auto_recover_targets = true
+fallback = "sccache"
+explain_miss = true

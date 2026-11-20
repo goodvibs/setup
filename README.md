@@ -1,5 +1,7 @@
 # Setup
 
+> **Archived.** These dotfiles now live in [goodvibs/dotfiles](https://github.com/goodvibs/dotfiles), managed with [yadm](https://yadm.io). Work-specific files are in the private `goodvibs/dotfiles-private` repo. This repo is kept only as a read-only record of the old symlink-based setup.
+
 Quickly reproduce my dev setup on a Mac.
 
 ## Prerequisites
